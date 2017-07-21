@@ -3,7 +3,7 @@
       <!-- 以下我的CSS loading -->
       <div class="cssload-container" v-if="myloading">
 	      <div class="cssload-zenith"></div>
-        <p>讀取中...</p>
+        <h2>讀取中...</h2>
       </div>
       <!-- 以下AJAX成功顯示的畫面 -->
   		<div class="row" v-if="successAJAX">
@@ -11,20 +11,20 @@
       			<h2>北美電影排行榜</h2>
     		</div>
 	    	<div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in usamovie">
-	      		<a v-bind:href="'https://movie.douban.com/subject/'+movie.subject.id" target="_blank">
+	      		<router-link :to="{ path: '/subject/'+movie.subject.id }">
 		        	<div class="myMovieCard">
 		          		<div class="myMovieImg">
 		            		<img v-bind:src="movie.subject.images.large">
 		          		</div>
-		          		<p>{{movie.subject.title}}</p>
+		          		<h4>{{movie.subject.title}}</h4>
 		          		<p>目前排名：{{movie.rank}}</p>
 		        	</div>
-	      		</a>
+	      		</router-link>
 	    	</div>
   		</div>
       <!-- 以下AJAX失敗顯示的畫面 -->
       <div class="row" v-if="errorAJAX">
-        <h2>讀取失敗!</h2>
+        <h2>讀取失敗，請重新整理!</h2>
       </div>
 	</div>
 </template>
@@ -87,7 +87,7 @@ a:hover {
   padding: 0px;
 }
 .container.mybox .row h2 {
-  color: #fff;
+  color: #444;
   font-weight: 900;
   margin-bottom: 30px;
 }
@@ -95,21 +95,26 @@ a:hover {
   box-sizing: border-box;
   background-color: #fff;
   margin-bottom: 30px;
-  color: #333;
-  font-weight: 900;
-  font-size: 16px;
-  border-bottom: 5px solid #30a300;
+  border-bottom: 5px solid #c11501;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  color: #333;
+  font-weight: 900;
 }
+.container.mybox .row .myMovieCard h4{
+  font-size: 20px;
+}
+.container.mybox .row .myMovieCard p{
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
 .container.mybox .row .myMovieCard:hover img {
   -webkit-transform: scale(1.15);
   transform: scale(1.15);
   transition: 0.3s;
 }
-.container.mybox .row .myMovieCard p {
-  margin-bottom: 0;
-}
+
 .container.mybox .row .myMovieImg {
   overflow: hidden;
   border-radius: 5px 5px 0px 0px;
@@ -128,6 +133,11 @@ a:hover {
     width: 100%;
     height: auto;
   }
+  .container.mybox .row .col-xs-12 .myMovieCard {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* CSS loading */
@@ -136,12 +146,12 @@ a:hover {
 	width: 100%;
 	height: 69px;
 	text-align: center;
-  margin-top: 100px;
+  margin-top: 150px;
 }
-.cssload-container p{
-  color: #fff;
+.cssload-container h2{
+  color: #222;
   font-size: 30px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .cssload-zenith {
 	width: 69px;

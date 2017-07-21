@@ -8,20 +8,18 @@
       <!-- 以下AJAX成功顯示的畫面 -->
   		<div class="row" v-if="successAJAX">
     		<div class="col-sm-12">
-      			<h2>正在上映的電影</h2>
+      			<h2>中國電影排行榜</h2>
     		</div>
-	    	<div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in nowPlaying">
-            <router-link :to="{ path: '/subject/'+movie.id }">
-	      		<!-- <a v-bind:href="'https://movie.douban.com/subject/'+movie.id" target="_blank"> -->
+	    	<div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in cnmovie">
+	      		<router-link :to="{ path: '/subject/'+movie.subject.id }">
 		        	<div class="myMovieCard">
 		          		<div class="myMovieImg">
-		            		<img v-bind:src="movie.images.large">
+		            		<img v-bind:src="movie.subject.images.large">
 		          		</div>
-		          		<h4>{{movie.title}}</h4>
-		          		<p>上映日期：{{movie.pubdate}}</p>
+		          		<h4>{{movie.subject.title}}</h4>
+		          		<p>目前排名：{{movie.rank}}</p>
 		        	</div>
-            </router-link>
-	      		<!-- </a> -->
+	      		</router-link>
 	    	</div>
   		</div>
       <!-- 以下AJAX失敗顯示的畫面 -->
@@ -32,12 +30,12 @@
 </template>
 
 <script>
-export default{
+export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      nowPlaying: {},
+      cnmovie: {},
       myloading:true,//用來判定是否需要loading畫面
 			successAJAX:null,//用來判定AJAX成功畫面
 			errorAJAX:null,//用來判定AJAX失敗畫面
@@ -46,18 +44,18 @@ export default{
   methods:{
     getData (){
       //宣告變數self保存"this"，這裡的tihs是上方data(){return裡的內容，因為下面AJAX如果用"this"會抓到AJAX自己本身
-      //這樣AJAX完就可以簡單的寫 變數.nowPlaying = AJAX的JSON內容，把JSON傳給data(){return 內的物件
+      //這樣AJAX完就可以簡單的寫 變數.usamovie = AJAX的JSON內容，把JSON傳給data(){return 內的物件
       var self = this 
-      var nowPlayingUrl = "https://api.douban.com/v2/movie/nowplaying?apikey=0df993c66c0c636e29ecbb5344252a4a"
+      var cnmovieUrl = "http://api.douban.com/v2/movie/weekly?apikey=0df993c66c0c636e29ecbb5344252a4a"
       $.ajax({
-        url: nowPlayingUrl,
+        url: cnmovieUrl,
         type: "get",
         dataType: "jsonp",
         success: function(data) {
           console.log("要求資料成功");
           //this.nowPlaying = data.entries;這樣寫不會報錯，因為這裡的"this"指的是AJAX自己
-          //但是上方data(){return裡的內容就仍然沒東西，想要傳給上方data(){return的nowPlaying，就用到AJAX前宣告的變數self保存的this
-          self.nowPlaying = data.entries;
+          //但是上方data(){return裡的內容就仍然沒東西，想要傳給上方data(){return的usamovie，就用到AJAX前宣告的變數self保存的this
+          self.cnmovie = data.subjects;
           self.successAJAX = true;
           self.myloading = false;
         },
@@ -110,6 +108,7 @@ a:hover {
   font-size: 16px;
   margin-bottom: 0;
 }
+
 .container.mybox .row .myMovieCard:hover img {
   -webkit-transform: scale(1.15);
   transform: scale(1.15);
@@ -170,18 +169,24 @@ a:hover {
 		-moz-animation: cssload-spin 690ms infinite linear;
 }
 
+
+
 @keyframes cssload-spin {
 	100%{ transform: rotate(360deg); transform: rotate(360deg); }
 }
+
 @-o-keyframes cssload-spin {
 	100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
 }
+
 @-ms-keyframes cssload-spin {
 	100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
 }
+
 @-webkit-keyframes cssload-spin {
 	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }
+
 @-moz-keyframes cssload-spin {
 	100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
 }

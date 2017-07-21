@@ -13,12 +13,12 @@ export default {
     navbar
   }
 }
-$(window).scroll(function(e){
-  if($(window).scrollTop()>0)
-    $(".navbar").removeClass("navbar-top");
-  else
-    $(".navbar").addClass("navbar-top");
-});
+// $(window).scroll(function(e){
+//   if($(window).scrollTop()>0)
+//     $(".navbar").removeClass("navbar-top");
+//   else
+//     $(".navbar").addClass("navbar-top");
+// });
 
 
 
@@ -32,10 +32,10 @@ $(window).scroll(function(e){
   font-family: "微軟正黑體";
 }
 body {
-   background-image: linear-gradient(135deg, #FEC163 0%, #DE4313 100%); 
+   /* background-image: linear-gradient(135deg, #FEC163 0%, #DE4313 100%);  */
+   background-color: #fcfcfc;
 }
 #app {
-  text-align: center;
   color: #2c3e50;
   margin-top: 100px;
   height: 550px;
