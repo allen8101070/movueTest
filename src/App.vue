@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar></navbar>
-          <router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -37,7 +37,7 @@ body {
 }
 #app {
   color: #2c3e50;
-  margin-top: 100px;
+  margin-top: 50px;
   height: 550px;
 }
 </style>

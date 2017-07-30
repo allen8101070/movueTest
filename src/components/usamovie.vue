@@ -10,7 +10,7 @@
     		<div class="col-sm-12">
       			<h2>北美電影排行榜</h2>
     		</div>
-	    	<div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in usamovie">
+	    	<div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in usamovie" :key="movie.subject.id">
 	      		<router-link :to="{ path: '/subject/'+movie.subject.id }">
 		        	<div class="myMovieCard">
 		          		<div class="myMovieImg">
@@ -45,12 +45,13 @@ export default {
     getData (){
       //宣告變數self保存"this"，這裡的tihs是上方data(){return裡的內容，因為下面AJAX如果用"this"會抓到AJAX自己本身
       //這樣AJAX完就可以簡單的寫 變數.usamovie = AJAX的JSON內容，把JSON傳給data(){return 內的物件
-      var self = this 
-      var usamovieUrl = "https://api.douban.com/v2/movie/us_box?apikey=0df993c66c0c636e29ecbb5344252a4a"
+      var self = this;
+      var myApiKey = "?apikey=0df993c66c0c636e29ecbb5344252a4a";
+      var usamovieUrl = "https://nameless-everglades-40413.herokuapp.com/movie/us_box"+myApiKey;
       $.ajax({
         url: usamovieUrl,
         type: "get",
-        dataType: "jsonp",
+        dataType: "json",
         success: function(data) {
           console.log("要求資料成功");
           //this.nowPlaying = data.entries;這樣寫不會報錯，因為這裡的"this"指的是AJAX自己
