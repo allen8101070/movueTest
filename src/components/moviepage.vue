@@ -21,6 +21,20 @@
               <div class="movieName">
                 <h2>{{ thisIdMovie.title }}</h2>
                 <!-- <h3 v-if="">{{ thisIdMovie.original_title }}</h3> -->
+
+
+                <h4>{{testStar}}</h4>
+                <div class="star-rating">
+                    <label class="star-rating__star"
+                    v-for="rating in ratings" :key="rating.id"
+                    :class="{ 'is-selected' : ((testStar >= rating) && testStar != null), 'is-disabled': disabled}"
+                    >
+                    <input ref="input" class="star-rating star-rating__checkbox" type="radio">★</label>
+                </div>
+
+
+
+
               </div>
               <ul>
                 <li>
@@ -52,7 +66,7 @@
               </ul>
               <div class="movieRating">
                 <p>
-                  <span>8.2</span>/10</p>
+                  <span>{{thisIdMovie.rating.average}}</span>/{{thisIdMovie.rating.max}}</p>
                 <h4>總評分</h4>
               </div>
             </div>
@@ -155,13 +169,18 @@
 <script>
 export default {
   name: 'moviepage',
+  props: {
+    max: 5,
+    disabled: ''
+    },
   data() {
     return {
       myloading: true,//用來判定是否需要loading畫面
       successAJAX: null,//用來判定AJAX成功畫面
       errorAJAX: null,//用來判定AJAX失敗畫面
       otherTitle: false,//用來判定是否顯示中文以外的原始電影名稱
-      thisIdMovie: {}
+      thisIdMovie: {},
+      testStar: null
     }
   },
   created() {
@@ -187,6 +206,7 @@ export default {
           self.thisIdMovie = data;
           self.successAJAX = true;
           self.myloading = false;
+          self.testStar = Math.round(self.thisIdMovie.rating.average /2 )
           if (data.title != data.original_title) {
             self.otherTitle = true;
           }
@@ -199,7 +219,18 @@ export default {
       });
 
     }
+  },
+  computed: {
+    ratings: function () {
+      if (!this.max) { return [1, 2, 3, 4, 5]; }
+        var numberArray = [];
+        for (var i = 1; this.max >= i; i++) {
+        numberArray.push(i);
+      }
+      return numberArray;
+    }
   }
+  
 }
 </script>
 
@@ -660,5 +691,26 @@ a:hover {
     -moz-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/* 星星CSS */
+
+.star-rating .star-rating__star {
+    display: inline-block;
+    padding: 3px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 1.1em;
+    color: #fff;
+    transition: color .2s ease-out;
+    cursor: pointer;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating .star-rating__star.is-selected {
+    color: #FFD700;
 }
 </style>
