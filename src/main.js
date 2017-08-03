@@ -6,9 +6,9 @@ import router from './router'
 import 'jquery/dist/jquery.min.js' 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import showRatings from './components/showRatings'
+
 Vue.config.productionTip = false
-Vue.component('show-ratings',showRatings);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

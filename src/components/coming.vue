@@ -11,7 +11,7 @@
       			<h2>即將上映的電影</h2>
     		</div>
 	    	<div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in coming" :key="movie.id">
-	      		<router-link :to="{ path: '/subject/'+movie.id }">
+	      		<router-link :to="{ path: '/subject/'+movie.id}">
 		        	<div class="myMovieCard">
 		          		<div class="myMovieImg">
 		            		<img v-bind:src="movie.images.large">
@@ -64,12 +64,17 @@ export default{
         error: function() {
           console.log("要求資料失敗");
           self.errorAJAX = true;
+          self.myloading = false;
         }
       });
     }
   },
   mounted (){
-    this.getData()
+    this.getData();
+    //載入時自動回到網頁最上方
+    $("html,body").animate({
+    scrollTop:0
+    },0);
   }
 }
 </script>
@@ -96,7 +101,7 @@ a:hover {
   box-sizing: border-box;
   background-color: #fff;
   margin-bottom: 30px;
-  border-bottom: 5px solid #c11501;
+  /* border-bottom: 5px solid #c11501; */
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   color: #333;

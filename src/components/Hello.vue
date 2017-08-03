@@ -6,7 +6,7 @@
           <br>您的電影好夥伴</h1>
       </div>
     </header>
-    <section id="section_ask">
+    <section id="sectionAsk">
       <div class="container">
         <div class="row">
           <div class="col-sm-5 img"></div>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </section>
-    <section id="section_about">
+    <section id="sectionAbout">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
@@ -49,7 +49,17 @@
         </div>
       </div>
     </section>
-    <section id="section_europe">
+    <section id="sectionHow">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 img"></div>
+          <div class="col-sm-7">
+            <h2>哈囉電影網的的特色是?</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="sectionThree">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
@@ -59,7 +69,7 @@
             </div>
             <div class="col-sm-12 features">
               <div class="col-sm-4">
-                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-eye-open myicon" aria-hidden="true"></span>
                 <h4>第三方電影網站</h4>
               </div>
               <div class="col-sm-4">
@@ -98,12 +108,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 * {
-  border: 1px solid #999
+  /* border: 1px solid #999 */
 }
 
 header.jumbotron {
   text-align: center;
-  background-image: url(http://tw.blog.voicetube.com/wp-content/uploads/2014/11/watch-movie.jpg);
+  background-image: url(https://img3.doubanio.com/view/photo/raw/public/p2432301090.jpg);
   background-size: cover;
   background-attachment: fixed;
   margin-bottom: 0px;
@@ -112,30 +122,76 @@ header.jumbotron {
 header.jumbotron .container {
   color: #fff;
   padding: 200px 0px;
+  text-shadow: 0px 0px 10px #000;
 }
-
-section#section_ask {
+section{
+  color: #333;
+}
+section#sectionAsk {
   background-color: #d28f1b;
+  color: #fff;
 }
 
-section#section_ask .col-sm-5.img {
-  background-image: url(http://4.bp.blogspot.com/-v1NUJt0dWuc/VPC5VE4xTkI/AAAAAAAAApk/bAvA6r4KftQ/s1600/Chamka%2BNweyakani%2BCinema%2B6.jpg);
+section#sectionAsk .col-sm-5.img {
+  background-image: url(http://img3.doubanio.com/view/photo/photo/public/p2209079394.jpg);
   background-position: top center;
   height: 350px;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode: multiply; */
+  background-size: cover;
 }
 
-section#section_ask h2 {
+section#sectionAsk h2 {
   margin-top: 130px;
   padding: 0px 20px;
 }
-
-section#section_about img {
+section#sectionAbout {
+  padding: 40px 0px;
+}
+section#sectionAbout img {
   width: 100%;
 }
-
-section#section_about .img_wrap {
+section#sectionAbout p{
+  font-size: 16px;
+}
+section#sectionAbout .img_wrap {
   height: 200px;
   overflow: hidden;
 }
+section#sectionHow {
+  background-color: #dd6216;
+  color: #fff;
+}
+
+section#sectionHow .col-sm-5.img {
+  background-image: url(http://img3.doubanio.com/view/photo/photo/public/p938463241.jpg);
+  background-position: top center;
+  height: 350px;
+  /* mix-blend-mode: multiply; */
+  background-size: cover;
+}
+
+section#sectionHow h2 {
+  margin-top: 130px;
+  padding: 0px 20px;
+}
+section#sectionThree {
+  text-align: center;
+  padding: 40px 0px;
+}
+section#sectionThree h2 {
+  text-align: left;
+}
+
+section#sectionThree p{
+  font-size: 16px;
+}
+
+section#sectionThree .features span{
+  font-size: 40px;
+  margin: 30px 0px;
+}
+section#sectionThree .features h4 {
+  margin-bottom: 30px;
+}
+
 </style>

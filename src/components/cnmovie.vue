@@ -37,8 +37,8 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       cnmovie: {},
       myloading:true,//用來判定是否需要loading畫面
-			successAJAX:null,//用來判定AJAX成功畫面
-			errorAJAX:null,//用來判定AJAX失敗畫面
+			successAJAX:false,//用來判定AJAX成功畫面
+			errorAJAX:false,//用來判定AJAX失敗畫面
     }
   },
   methods:{
@@ -63,12 +63,17 @@ export default {
         error: function() {
           console.log("要求資料失敗");
           self.errorAJAX = true;
+          self.myloading = false;
         }
       });
     }
   },
   mounted (){
     this.getData()
+    //載入時自動回到網頁最上方
+    $("html,body").animate({
+    scrollTop:0
+    },0);
   }
 }
 </script>
@@ -96,7 +101,7 @@ a:hover {
   box-sizing: border-box;
   background-color: #fff;
   margin-bottom: 30px;
-  border-bottom: 5px solid #c11501;
+  /* border-bottom: 5px solid #c11501; */
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   color: #333;

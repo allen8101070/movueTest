@@ -26,6 +26,9 @@
                 <li>
                     <router-link :to="{ path: '/coming' }">即將上映</router-link>
                 </li>
+                <li>
+                    <router-link :to="{ path: '/about' }">關於我們</router-link>
+                </li>
 			</ul>
 		</div>
 		<!-- 手機隱藏選單區結束 -->
@@ -50,7 +53,7 @@ nav.navbar.navbar-default.navbar-fixed-top a:hover{
 }
 
 nav.navbar.navbar-default.navbar-fixed-top.navbar-top {
-  background-image: linear-gradient( 135deg, #49d14f 0%, #12aa56 100%);
+  background-image: linear-gradient( 135deg, #e5d55e 0%, #f24d02 100%);
   /* border-bottom: 1px solid #fff; */
 }
 nav.navbar.navbar-default.navbar-fixed-top.navbar-top a {

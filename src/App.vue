@@ -36,10 +36,9 @@ export default {
 }
 body {
    /* background-image: linear-gradient(135deg, #FEC163 0%, #DE4313 100%);  */
-   background-color: #fcfcfc;
 }
 #app {
-  color: #2c3e50;
+
   margin-top: 50px;
   height: 550px;
 }

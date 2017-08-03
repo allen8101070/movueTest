@@ -6,7 +6,7 @@ import moviepage from '@/components/moviepage'
 import coming from '@/components/coming'
 import usamovie from '@/components/usamovie'
 import cnmovie from '@/components/cnmovie'
-
+import about from '@/components/about'
 Vue.use(Router)
 
 export default new Router({
@@ -41,5 +41,10 @@ export default new Router({
     name: 'moviepage',
     component: moviepage
     },
+    {
+    path : '/about',
+    name: 'about',
+    component: about
+    }
   ]
 })
