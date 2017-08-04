@@ -87,6 +87,8 @@ a:hover {
 
 .container.mybox {
   box-sizing: border-box;
+  /* 因為導覽列fix定住 所以往上推50px不讓區塊被導覽列擋住 */
+  margin-top: 50px;
 }
 .container.mybox .row {
   text-align: center;
@@ -149,10 +151,11 @@ a:hover {
 /* CSS loading */
 
 .cssload-container {
-	width: 100%;
-	height: 69px;
-	text-align: center;
-  margin-top: 150px;
+  width: 100%;
+  height: 69px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 400px;
 }
 .cssload-container h2{
   color: #222;

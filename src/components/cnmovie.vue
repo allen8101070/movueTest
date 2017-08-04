@@ -17,6 +17,7 @@
 		            		<img v-bind:src="movie.subject.images.large">
 		          		</div>
 		          		<h4>{{movie.subject.title}}</h4>
+                  <p>總分：{{movie.subject.rating.average}}/{{movie.subject.rating.max}}</p> 
 		          		<p>目前排名：{{movie.rank}}</p>
 		        	</div>
 	      		</router-link>
@@ -86,7 +87,8 @@ a:hover {
 
 .container.mybox {
   box-sizing: border-box;
-  margin-top: 70px;
+  /* 因為導覽列fix定住 所以往上推50px不讓區塊被導覽列擋住 */
+  margin-top: 50px;
 }
 .container.mybox .row {
   text-align: center;
@@ -149,10 +151,11 @@ a:hover {
 /* CSS loading */
 
 .cssload-container {
-	width: 100%;
-	height: 69px;
-	text-align: center;
-  margin-top: 150px;
+  width: 100%;
+  height: 69px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 400px;
 }
 .cssload-container h2{
   color: #222;

@@ -37,31 +37,33 @@
 </template>
 
 <style scoped>
-nav.navbar.navbar-default.navbar-fixed-top.mynav{
+.navbar.navbar-default.navbar-fixed-top.mynav{
   font-size: 18px;
   transition: 0.5s;
   font-weight: 900;
   background-color: #000;
   border:none;
 }
-nav.navbar-default .navbar-nav>li>a, nav.navbar-default .navbar-brand{
+.navbar-default .navbar-nav>li>a, nav.navbar-default .navbar-brand{
   color: #fff;
   text-shadow: 0px 0px 2px #333;
 }
-nav.navbar.navbar-default.navbar-fixed-top a:hover{
+.navbar.navbar-default.navbar-fixed-top a:hover{
 	color: red;
 }
 
-nav.navbar.navbar-default.navbar-fixed-top.navbar-top {
-  background-image: linear-gradient( 135deg, #e5d55e 0%, #f24d02 100%);
+.navbar.navbar-default.navbar-fixed-top.navbar-top {
+  /* background-image: linear-gradient( 135deg, #e5d55e 0%, #f24d02 100%); */
   /* border-bottom: 1px solid #fff; */
+  background-color: #d64502;
+  margin-bottom: 0px;
 }
-nav.navbar.navbar-default.navbar-fixed-top.navbar-top a {
+.navbar.navbar-default.navbar-fixed-top.navbar-top a {
   color: #fff;
   font-size: 18px;
   transition: 0.5s;
 }
-nav.navbar.navbar-default.navbar-fixed-top.navbar-top a:hover {
+.navbar.navbar-default.navbar-fixed-top.navbar-top a:hover {
   color: #014ea0;
 }
 .navbar-default .navbar-toggle {

@@ -108,14 +108,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 * {
-  /* border: 1px solid #999 */
+   /* border: 1px solid #999  */
 }
 
 header.jumbotron {
-  text-align: center;
-  background-image: url(https://img3.doubanio.com/view/photo/raw/public/p2432301090.jpg);
+  /* text-align: center; */
+  background-image: url(http://i.imgur.com/9tMnrdr.jpg);
   background-size: cover;
   background-attachment: fixed;
+  background-repeat:no-repeat;
   margin-bottom: 0px;
 }
 
@@ -144,6 +145,11 @@ section#sectionAsk h2 {
   margin-top: 130px;
   padding: 0px 20px;
 }
+@media (max-width: 768px){
+  section#sectionAsk h2 {
+    margin: 80px 0px;
+  }
+}
 section#sectionAbout {
   padding: 40px 0px;
 }
@@ -156,6 +162,21 @@ section#sectionAbout p{
 section#sectionAbout .img_wrap {
   height: 200px;
   overflow: hidden;
+}
+@media (max-width: 767px){
+  section#sectionAbout .img_wrap {
+    height: 250px;
+  }
+}
+@media (max-width: 668px){
+  section#sectionAbout .img_wrap {
+    height: 300px;
+  }
+}
+@media (max-width: 413px){
+  section#sectionAbout .img_wrap {
+    height: 220px;
+  }
 }
 section#sectionHow {
   background-color: #dd6216;
@@ -173,6 +194,11 @@ section#sectionHow .col-sm-5.img {
 section#sectionHow h2 {
   margin-top: 130px;
   padding: 0px 20px;
+}
+@media (max-width: 768px){
+  section#sectionHow h2 {
+    margin: 80px 0px;
+  }
 }
 section#sectionThree {
   text-align: center;

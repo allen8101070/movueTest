@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mybox">
     <!-- 以下我的CSS loading -->
     <div class="cssload-container" v-if="myloading">
       <div class="cssload-zenith"></div>
@@ -23,10 +23,10 @@
               <div class="movieName">
                 <h2>{{ thisIdMovie.title }}</h2>
                 <h3 v-if="otherTitle">{{ thisIdMovie.original_title }}</h3>
-  
                 <h4 v-if="ratingYes">總評分：
                   <span>{{thisIdMovie.rating.average}}</span>/{{thisIdMovie.rating.max}}</h4>
                 <h4 v-if="ratingNo">總評分：暫無評分</h4>
+                <!-- 星星STAR -->
                 <div class="star-rating">
                   <label class="star-rating__star" v-for="rating in ratings" :key="rating.id" :class="{ 'is-selected' : ((testStar >= rating) && testStar != null), 'is-disabled': disabled}">★</label>
                 </div>
@@ -97,7 +97,6 @@
                 <div class="trailers">
                   <a v-bind:href="trailer.alt">
                     <div class="trailersHover">
-                      <p>{{trailer.title}}</p>
                       <span class="glyphicon glyphicon-play" aria-hidden="" true></span>
                     </div>
                   </a>
@@ -196,8 +195,8 @@ export default {
       otherTitle: false,//用來判定是否顯示中文以外的原始電影名稱
       thisIdMovie: {},
       testStar: null,//星星用
-      ratingYes: true,//辦別星星或分數是否可以顯示
-      ratingNo: false,//辦別星星或分數是否可以顯示
+      ratingYes: true,//辦別分數是否可以顯示
+      ratingNo: false,//辦別分數是否可以顯示
       castYes: true,//辦別演員是否有資料可以顯示演員區塊
       castNo: false,//辦別演員是否有資料可以顯示演員區塊
       traVdo: true, //預設有預告片區塊 是true
@@ -290,11 +289,14 @@ export default {
 }
 
 * {
-  /* border: 1px solid #999;  */
+   /* border: 1px solid #999;   */
 }
 .errorAJAX {
 text-align: center;
 margin-top: 100px;
+}
+.mybox{
+  margin-top: 50px;
 }
 a:hover {
   text-decoration: none;
@@ -432,6 +434,7 @@ a:hover {
     max-width: 100%;
     height: auto;
     position: static;
+    padding-left: 30px;
   }
 
   .movieName {
@@ -439,7 +442,7 @@ a:hover {
   }
 }
 
-@media(max-width:768px) {
+@media(max-width:767px) {
   .boxTop {
     display: none;
   }
@@ -453,8 +456,11 @@ a:hover {
     position: static;
     margin-bottom: 15px;
   }
-  .movieMsg li {
+   .movieMsg li {
     text-align: center;
+  } 
+  .thismimg img {
+    padding-left: 0px;
   }
 }
 
@@ -474,13 +480,7 @@ a:hover {
 .info1 .trailers {
   text-align: center;
   position: relative;
-  display: inline-block;
   margin-bottom: 20px
-}
-
-.info1 .trailers:hover .trailersHover {
-  background-color: rgba(0, 0, 0, 0.6);
-  opacity: 1;
 }
 
 .info1 .trailersHover {
@@ -490,21 +490,16 @@ a:hover {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.6)
 }
 
 .info1 .trailersHover span {
   font-size: 70px;
-  color: #00a343;
-  margin-top: 10%;
+  color: #fff;
+  text-shadow: 0px 0px 15px #fff;
+  margin-top: 20%;
 }
 
-.info1 .trailersHover p {
-  margin-top: 30px;
-  color: #00a343;
-  font-size: 20px;
-  font-weight: 900;
-}
 
 @media(max-width:992px) {
   .trailers {
@@ -662,7 +657,8 @@ a:hover {
   width: 100%;
   height: 69px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 400px;
 }
 
 .cssload-container p {

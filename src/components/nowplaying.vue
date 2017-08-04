@@ -1,10 +1,10 @@
 <template>
   <div class="container mybox">
     <!-- 以下我的CSS loading -->
-    <div class="cssload-container" v-if="myloading">
-      <div class="cssload-zenith"></div>
-      <h2>讀取中...</h2>
-    </div>
+        <div class="cssload-container" v-if="myloading">
+          <div class="cssload-zenith"></div>
+          <h2>讀取中...</h2>
+        </div>
     <!-- 以下AJAX成功顯示的畫面 -->
     <div class="row" v-if="successAJAX">
       <div class="col-sm-12">
@@ -91,7 +91,9 @@ a:hover {
 
 .container.mybox {
   box-sizing: border-box;
-  margin-top: 70px;
+  /* 因為導覽列fix定住 所以往上推50px不讓區塊被導覽列擋住 */
+  margin-top: 50px;
+
 }
 
 .container.mybox .row {
@@ -165,7 +167,8 @@ a:hover {
   width: 100%;
   height: 69px;
   text-align: center;
-  margin-top: 150px;
+  margin-top: 100px;
+  margin-bottom: 400px;
 }
 
 .cssload-container h2 {
