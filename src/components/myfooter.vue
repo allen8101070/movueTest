@@ -1,17 +1,13 @@
-<template>
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">2017</span>
-      </div>
-    </footer>
+<template lang="pug">
+	footer.footer
+		.container
+			span.text-muted 2017
 </template>
 
-<style scoped>
-.footer{
-  padding: 30px 0px;
-  background-color: #000;
-
-}
+<style scoped lang="sass">
+.footer
+  padding: 30px 0px
+  background-color: #000
 </style>
 
 

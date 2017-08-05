@@ -1,7 +1,6 @@
-<template>
-	<div class="container mybox">
-    <h4>YEEEEEEEEEEEE</h4>
-	</div>
+<template lang="pug">
+  .container.mybox
+    h4 YEEEEEEEEEEEE
 </template>
 
 <script>

@@ -1,34 +1,25 @@
-<template>
-  <div class="container mybox">
-    <!-- 以下我的CSS loading -->
-        <div class="cssload-container" v-if="myloading">
-          <div class="cssload-zenith"></div>
-          <h2>讀取中...</h2>
-        </div>
-    <!-- 以下AJAX成功顯示的畫面 -->
-    <div class="row" v-if="successAJAX">
-      <div class="col-sm-12">
-        <h2>正在上映的電影</h2>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-md-3" v-for="movie in nowPlaying" :key="movie.id">
-        <router-link :to="{ path: '/subject/'+movie.id }">
-          <!-- <a v-bind:href="'https://movie.douban.com/subject/'+movie.id" target="_blank"> -->
-          <div class="myMovieCard">
-            <div class="myMovieImg">
-              <img v-bind:src="movie.images.large">
-            </div>
-            <h4>{{movie.title}}</h4>
-            <p>上映日期：{{movie.pubdate}}</p>
-          </div>
-        </router-link>
-        <!-- </a> -->
-      </div>
-    </div>
-    <!-- 以下AJAX失敗顯示的畫面 -->
-    <div class="row" v-if="errorAJAX">
-      <h2>讀取失敗，請重新整理!</h2>
-    </div>
-  </div>
+<template lang="pug">
+  .container.mybox
+      // 以下我的CSS loading
+      .cssload-container(v-if="myloading")
+          .cssload-zenith
+          h2 讀取中...
+      // 以下AJAX成功顯示的畫面
+      .row(v-if="successAJAX")
+          .col-sm-12
+              h2 正在上映的電影
+          .col-xs-12.col-sm-4.col-md-3(v-for="movie in nowPlaying", :key="movie.id")
+              router-link(:to="{ path: '/subject/'+movie.id }")
+                  // <a v-bind:href="'https://movie.douban.com/subject/'+movie.id" target="_blank">
+                  .myMovieCard
+                      .myMovieImg
+                          img(v-bind:src="movie.images.large")
+                      h4 {{movie.title}}
+                      p 上映日期：{{movie.pubdate}}
+              // </a>
+      // 以下AJAX失敗顯示的畫面
+      .row(v-if="errorAJAX")
+          h2 讀取失敗，請重新整理!
 </template>
 
 <script>
@@ -81,150 +72,116 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-*{
-  /* border: 1px solid #333; */
-}
-a:hover {
-  text-decoration: none;
-}
+<style scoped lang="sass">
+*
+  /* border: 1px solid #333;
 
-.container.mybox {
-  box-sizing: border-box;
-  /* 因為導覽列fix定住 所以往上推50px不讓區塊被導覽列擋住 */
-  margin-top: 50px;
+a:hover
+  text-decoration: none
 
-}
+.container.mybox
+  box-sizing: border-box
+  /* 因為導覽列fix定住 所以往上推50px不讓區塊被導覽列擋住
+  margin-top: 50px
+  .row
+    text-align: center
+    padding: 0px
+    h2
+      color: #444
+      font-weight: 900
+      margin-bottom: 30px
+    .myMovieCard
+      box-sizing: border-box
+      background-color: #fff
+      margin-bottom: 30px
+      box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5)
+      border-radius: 5px
+      color: #333
+      font-weight: 900
+      h4
+        font-size: 20px
+      p
+        font-size: 16px
+        margin-bottom: 0
+      &:hover img
+        -webkit-transform: scale(1.15)
+        transform: scale(1.15)
+        transition: 0.3s
+    .myMovieImg
+      overflow: hidden
+      border-radius: 5px 5px 0px 0px
+      height: 0
+      padding-bottom: 300px
+      img
+        max-width: 100%
 
-.container.mybox .row {
-  text-align: center;
-  padding: 0px;
-}
+@media (max-width: 768px)
+  .container.mybox .row
+    .myMovieImg
+      height: auto
+      padding-bottom: 0px
+      img
+        width: 100%
+        height: auto
+    .col-xs-12 .myMovieCard
+      max-width: 80%
+      margin-left: auto
+      margin-right: auto
 
-.container.mybox .row h2 {
-  color: #444;
-  font-weight: 900;
-  margin-bottom: 30px;
-}
+/* CSS loading
 
-.container.mybox .row .myMovieCard {
-  box-sizing: border-box;
-  background-color: #fff;
-  margin-bottom: 30px;
+.cssload-container
+  width: 100%
+  height: 69px
+  text-align: center
+  margin-top: 100px
+  margin-bottom: 400px
+  h2
+    color: #222
+    font-size: 30px
+    margin-top: 50px
 
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  color: #333;
-  font-weight: 900;
-}
+.cssload-zenith
+  width: 69px
+  height: 69px
+  margin: 0 auto
+  border-radius: 50%
+  border-top-color: transparent
+  border-left-color: transparent
+  border-right-color: transparent
+  box-shadow: 4px 4px 1px rgb(77, 235, 68)
+  animation: cssload-spin 690ms infinite linear
+  -o-animation: cssload-spin 690ms infinite linear
+  -ms-animation: cssload-spin 690ms infinite linear
+  -webkit-animation: cssload-spin 690ms infinite linear
+  -moz-animation: cssload-spin 690ms infinite linear
 
-.container.mybox .row .myMovieCard h4 {
-  font-size: 20px;
-}
-
-.container.mybox .row .myMovieCard p {
-  font-size: 16px;
-  margin-bottom: 0;
-}
-
-.container.mybox .row .myMovieCard:hover img {
-  -webkit-transform: scale(1.15);
-  transform: scale(1.15);
-  transition: 0.3s;
-}
-
-.container.mybox .row .myMovieImg {
-  overflow: hidden;
-  border-radius: 5px 5px 0px 0px;
-  height: 0;
-  padding-bottom: 300px;
-}
-
-.container.mybox .row .myMovieImg img {
-  max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .container.mybox .row .myMovieImg {
-    height: auto;
-    padding-bottom: 0px;
-  }
-  .container.mybox .row .myMovieImg img {
-    width: 100%;
-    height: auto;
-  }
-  .container.mybox .row .col-xs-12 .myMovieCard {
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+@keyframes cssload-spin
+  100%
+    transform: rotate(360deg)
+    transform: rotate(360deg)
 
 
-/* CSS loading */
+@-o-keyframes cssload-spin
+  100%
+    -o-transform: rotate(360deg)
+    transform: rotate(360deg)
 
-.cssload-container {
-  width: 100%;
-  height: 69px;
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 400px;
-}
 
-.cssload-container h2 {
-  color: #222;
-  font-size: 30px;
-  margin-top: 50px;
-}
+@-ms-keyframes cssload-spin
+  100%
+    -ms-transform: rotate(360deg)
+    transform: rotate(360deg)
 
-.cssload-zenith {
-  width: 69px;
-  height: 69px;
-  margin: 0 auto;
-  border-radius: 50%;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  box-shadow: 4px 4px 1px rgb(77, 235, 68);
-  animation: cssload-spin 690ms infinite linear;
-  -o-animation: cssload-spin 690ms infinite linear;
-  -ms-animation: cssload-spin 690ms infinite linear;
-  -webkit-animation: cssload-spin 690ms infinite linear;
-  -moz-animation: cssload-spin 690ms infinite linear;
-}
 
-@keyframes cssload-spin {
-  100% {
-    transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+@-webkit-keyframes cssload-spin
+  100%
+    -webkit-transform: rotate(360deg)
+    transform: rotate(360deg)
 
-@-o-keyframes cssload-spin {
-  100% {
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 
-@-ms-keyframes cssload-spin {
-  100% {
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes cssload-spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes cssload-spin {
-  100% {
-    -moz-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+@-moz-keyframes cssload-spin
+  100%
+    -moz-transform: rotate(360deg)
+    transform: rotate(360deg)
 </style>
